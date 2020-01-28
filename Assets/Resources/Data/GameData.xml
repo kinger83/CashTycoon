@@ -1,0 +1,78 @@
+<GameData>
+  <GAMEMANAGER>
+    <CompanyName>Kingsbury Enterprises</CompanyName>
+    <StartingBalance>10</StartingBalance>
+  </GAMEMANAGER>
+  <STORES>
+  <Store>
+    <Name>Lenny's Lemonade Stand</Name>
+    <Image>lemonade</Image>
+    <BaseStoreCost>1.5</BaseStoreCost>
+    <BaseStoreUpgradeCost>1</BaseStoreUpgradeCost>
+    <BaseStoreProfit>2</BaseStoreProfit>
+    <BaseStoreTimer>2</BaseStoreTimer>
+    <BaseCostMultiplier>1.3</BaseCostMultiplier>
+    <BaseProfitMultiplier>1.6</BaseProfitMultiplier>
+    <ManagerDetails>
+      <ManagerName>Little bobbo Lenny</ManagerName>
+      <ManagerHirePrice>5</ManagerHirePrice>
+      <ManagerCut>5</ManagerCut>
+    </ManagerDetails>
+    
+  </Store>
+
+  <Store>
+    <Name>Hogans Hotel</Name>
+    <Image>hotel</Image>
+    <BaseStoreCost>20.5</BaseStoreCost>
+    <BaseStoreUpgradeCost>4</BaseStoreUpgradeCost>
+    <BaseStoreProfit>7</BaseStoreProfit>
+    <BaseStoreTimer>4</BaseStoreTimer>
+    <BaseCostMultiplier>1.3</BaseCostMultiplier>
+    <BaseProfitMultiplier>1.6</BaseProfitMultiplier>
+    <ManagerDetails>
+      <ManagerName>Harry Widnt</ManagerName>
+      <ManagerHirePrice>250</ManagerHirePrice>
+      <ManagerCut>8</ManagerCut>
+    </ManagerDetails>
+  </Store>
+  </STORES>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</GameData>
+
