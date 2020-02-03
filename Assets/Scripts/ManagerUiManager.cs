@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ManagerUiManager : MonoBehaviour
 {
+    private Text _managedStoreText = null;
     private Text _mangerNameText = null;
     private Text _managerHireText = null;
     private Text _mangerCutText = null;
@@ -21,7 +22,7 @@ public class ManagerUiManager : MonoBehaviour
 
     private void Awake()
     {
-
+        _managedStoreText = transform.Find("ManagesStoreText").GetComponent<Text>();
         _mangerNameText = transform.Find("ManagerNameText").GetComponent<Text>();
         _managerHireText = transform.Find("ManagerHireText").GetComponent<Text>();
         _mangerCutText = transform.Find("ManagerPercentageText").GetComponent<Text>();
@@ -34,6 +35,7 @@ public class ManagerUiManager : MonoBehaviour
     private void SetManagerDetails()
     {
         _hiredText.gameObject.SetActive(false);
+        _managedStoreText.text = _managerScript.StoreBeingManaged;
         _mangerNameText.text = _managerScript.ManagerName;
         _managerHireText.text = _managerScript.ManagerHireCost.ToString("C2");
         _mangerCutText.text = _managerScript.ManagerCut.ToString("C2");

@@ -8,6 +8,7 @@ public class StoreUIManager : MonoBehaviour
     private Store _store;
     private CanvasGroup _cg = null;
 
+    [SerializeField] Text _storeName = null;
     [SerializeField] Slider _progressSlider = null;
     [SerializeField] GameObject _upgradeCostGameobject = null;
     [SerializeField] GameObject _openStoreGameobject = null;
@@ -18,6 +19,11 @@ public class StoreUIManager : MonoBehaviour
     [SerializeField] Text _nextCost = null;
     [SerializeField] Text _storeCountText = null;
     // Start is called before the first frame update
+
+    private void OnEnable()
+    {
+        LoadGameData.OnLoadDataComplete += SetStoreName_Image;
+    }
     private void Awake()
     {
         _store = GetComponent<Store>();
@@ -63,5 +69,15 @@ public class StoreUIManager : MonoBehaviour
         _openStoreButton.interactable = openStoreButtonInteractable;
         _upgradeButton.interactable = upgradeStoreButtonInteractable;
 
+    }
+
+    private void SetStoreName_Image()
+    {
+        _storeName.text = _store.StoreName;
+    }
+
+    private void OnDisable()
+    {
+        LoadGameData.OnLoadDataComplete -= SetStoreName_Image;
     }
 }

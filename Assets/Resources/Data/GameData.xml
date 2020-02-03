@@ -18,6 +18,20 @@
       <ManagerHirePrice>5</ManagerHirePrice>
       <ManagerCut>5</ManagerCut>
     </ManagerDetails>
+    <UpgradesList>
+      <UpgradeItem>
+        <UpgradeName>Refridgeration</UpgradeName>
+        <UpgradeCost>250</UpgradeCost>
+        <UpgradeDiscription>Keeps drinks cold, allowing for better storage, and higher sale price.</UpgradeDiscription>
+        <UpgradeMultiplier>15</UpgradeMultiplier>
+      </UpgradeItem>
+      <UpgradeItem>
+        <UpgradeName>Mobile Van</UpgradeName>
+        <UpgradeCost>250000000</UpgradeCost>
+        <UpgradeDiscription>A mobile service fan, to always be ready at the busiest places.</UpgradeDiscription>
+        <UpgradeMultiplier>80</UpgradeMultiplier>
+      </UpgradeItem>
+    </UpgradesList>
     
   </Store>
 
@@ -35,6 +49,14 @@
       <ManagerHirePrice>250</ManagerHirePrice>
       <ManagerCut>8</ManagerCut>
     </ManagerDetails>
+    <UpgradesList>
+      <UpgradeItem>
+        <UpgradeName>NAME</UpgradeName>
+        <UpgradeCost>65654654564</UpgradeCost>
+        <UpgradeDiscription>DESCRIPTION</UpgradeDiscription>
+        <UpgradeMultiplier>000</UpgradeMultiplier>
+      </UpgradeItem>
+    </UpgradesList>
   </Store>
   </STORES>
 

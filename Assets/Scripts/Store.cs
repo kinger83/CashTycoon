@@ -13,12 +13,14 @@ public class Store : MonoBehaviour
     private int _nextStoreNumber = 0;
     private float _CurrentTimer = 0.0f;
     private float _actualNextCost = 0.0f;
+    private float _minTimerTime = 1.0f;
 
     private bool _startTimer = false;
     private bool _storeUnlocked  = false;
     public bool _storeOpen { get; private set; } = false;
 
     private int _storeTimerDivisionValue = 5;
+    private float _upgradeMultilier = 1.0f;
 
     [SerializeField] float _baseStoreCost = 5.0f;
     [SerializeField] float _baseStoreUpgradeCost = 0.5f;
@@ -94,6 +96,8 @@ public class Store : MonoBehaviour
         if(_storeCount % _storeTimerDivisionValue == 0)
         {
             _baseStoreTimer /= 2;
+            if (_baseStoreTimer < _minTimerTime)
+                _baseStoreTimer = _minTimerTime;
         }
         
     }
@@ -122,6 +126,7 @@ public class Store : MonoBehaviour
         if (_startTimer)
         {
             _CurrentTimer += Time.deltaTime * _ManagerTimerSpeedBonus;
+
             ProgressTimerValue = _CurrentTimer / _baseStoreTimer;
 
             if (_CurrentTimer >= _baseStoreTimer)
@@ -139,7 +144,7 @@ public class Store : MonoBehaviour
 
     private void CreditFunds()
     {
-        GameManager.instance.Add_Subtract_Money(_baseStoreProfit *(Mathf.Pow(_storeProfitMuliplier , _storeCount)));
+        GameManager.instance.Add_Subtract_Money(_baseStoreProfit *(Mathf.Pow(_storeProfitMuliplier , _storeCount))*_upgradeMultilier);
     }
 
     private void UpdateStoreCount(int amount)
@@ -199,6 +204,11 @@ public class Store : MonoBehaviour
 
             }
         }
+    }
+
+    public void AddUpgradeMultipiler(float multiplier)
+    {
+        _upgradeMultilier += multiplier;
     }
 
     private void OnDisable()

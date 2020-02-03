@@ -73,3 +73,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _storePanel: {fileID: 0}
   _managerPanel: {fileID: 0}
+  _upgradesPanel: {fileID: 0}

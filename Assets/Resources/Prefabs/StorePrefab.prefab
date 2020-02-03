@@ -719,7 +719,7 @@ GameObject:
   - component: {fileID: 5720721049927153416}
   - component: {fileID: 1054648925}
   m_Layer: 5
-  m_Name: StorePanel
+  m_Name: StorePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -804,10 +804,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseStoreCost: 5
   _baseStoreUpgradeCost: 2
+  _baseStoreProfit: 2
+  _baseStoreTimer: 5
   _storeCostMultiplier: 1.5
   _storeProfitMuliplier: 1.1
-  _baseStoreTimer: 5
-  _baseStoreProfit: 2
   _storeType: 0
 --- !u!114 &5720721049927153416
 MonoBehaviour:
@@ -821,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d6ff0a3c6dd8a4085dfc07381ba2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _storeName: {fileID: 6159103532066014072}
   _progressSlider: {fileID: 6159103532844996180}
   _upgradeCostGameobject: {fileID: 6159103532098592855}
   _openStoreGameobject: {fileID: 6159103533011844687}

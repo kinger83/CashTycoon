@@ -7,6 +7,7 @@ public class StoreManager : MonoBehaviour
     private ManagerUiManager _uiManager = null;
     private Store _managedStoreScript = null;
     private bool _managerHired = false;
+    public string StoreBeingManaged { get; set; } = null;
     public string ManagerName { get; set; } = null;
     public float ManagerHireCost { get; set; }
     public float ManagerCut { get; set; }

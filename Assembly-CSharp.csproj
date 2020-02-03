@@ -70,6 +70,8 @@
     <Compile Include="Assets\Scripts\StoreManager.cs" />
     <Compile Include="Assets\Scripts\StoreUIManager.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UpgradesManager.cs" />
+    <Compile Include="Assets\Scripts\UpgradesUIManager.cs" />
     <None Include="Assets\Resources\Data\GameData.xml" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Jason/UNITY/Repos/CashTycoon/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

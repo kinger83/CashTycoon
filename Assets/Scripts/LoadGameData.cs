@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
@@ -9,17 +10,21 @@ public class LoadGameData : MonoBehaviour
     public delegate void LoadDataComplete();
     public static event LoadDataComplete OnLoadDataComplete; 
 
-    private GameObject _storePrefab;
-    private GameObject _managerPrefab;
+    private GameObject _storePrefab = null;
+    private GameObject _managerPrefab = null;
+    private GameObject _upgradePrefab = null;
+    private string _storename = null;
 
     [SerializeField] GameObject _storePanel = null;
     [SerializeField] GameObject _managerPanel = null;
+    [SerializeField] GameObject _upgradesPanel = null;
 
 
     private void Start()
     {
         _storePrefab = Resources.Load("Prefabs/StorePrefab") as GameObject;
         _managerPrefab = Resources.Load("Prefabs/ManagerPrefab") as GameObject;
+        _upgradePrefab = Resources.Load("Prefabs/UpgradePrefab") as GameObject;
         Invoke("LoadData", 0.1f);
         
     }
@@ -54,8 +59,8 @@ public class LoadGameData : MonoBehaviour
                 if (storeNode.Name == "Name")
                 {
                     string setName = storeNode.InnerText;
-                    Text storeText = thisstore.transform.Find("Store Name").GetComponent<Text>();
-                    storeText.text = setName;
+                    _storename = setName;
+                    thisstore.StoreName = setName;
                 }
 
                 if (storeNode.Name == "Image")
@@ -97,12 +102,56 @@ public class LoadGameData : MonoBehaviour
 
                 if (storeNode.Name == "ManagerDetails")
                 {
-                    LoadManagerInfo(storeNode, newStore );
+                    LoadManagerInfo(storeNode, newStore, _storename);
+                }
+                if(storeNode.Name == "UpgradesList")
+                {
+                    LoadUpgrades(storeNode, newStore, _storename);
                 }
 
             }
         }
         OnLoadDataComplete();
+    }
+
+    private void LoadUpgrades(XmlNode storeNode, GameObject newStore, string storename)
+    {
+        
+
+        XmlNodeList upgradeList = storeNode.ChildNodes;
+        foreach (XmlNode upgradeItemNode in upgradeList)
+        {
+            GameObject newUpgrade = Instantiate(_upgradePrefab);
+            newUpgrade.transform.SetParent(_upgradesPanel.transform);
+            UpgradesManager upgradesManager = newUpgrade.GetComponent<UpgradesManager>();
+
+            upgradesManager.UpgradeforStoreNameGameObject = newStore;
+            upgradesManager.UpgradeforStoreName = storename;
+            XmlNodeList upgradeDetails = upgradeItemNode.ChildNodes;
+            foreach (XmlNode upgradeDetail in upgradeDetails)
+            {
+                if(upgradeDetail.Name == "UpgradeName")
+                {
+                    upgradesManager.UpgradeName = upgradeDetail.InnerText;
+                }
+                
+                if (upgradeDetail.Name == "UpgradeCost")
+                {
+                    upgradesManager.UpgradeCost = float.Parse(upgradeDetail.InnerText);
+                }
+                
+                if (upgradeDetail.Name == "UpgradeDiscription")
+                {
+                    upgradesManager.UpgradeDescription = upgradeDetail.InnerText;
+                }
+                
+                if (upgradeDetail.Name == "UpgradeMultiplier")
+                {
+                    upgradesManager.UpgradeMulitplier = float.Parse(upgradeDetail.InnerText);
+                }
+            }
+        }
+
     }
 
     private static void LoadGameManagerVariables(XmlNodeList startingBalanceNode, XmlNodeList companyNameNode)
@@ -119,10 +168,10 @@ public class LoadGameData : MonoBehaviour
         }
         OnLoadDataComplete();
     }
-    private void LoadManagerInfo(XmlNode storeNode, GameObject newStore)
+    private void LoadManagerInfo(XmlNode storeNode, GameObject newStore, string storename)
     {
 
-        GameObject newManager = (GameObject)Instantiate(_managerPrefab);
+        GameObject newManager = Instantiate(_managerPrefab);
         newManager.transform.SetParent(_managerPanel.transform);
         StoreManager manager = newManager.GetComponent<StoreManager>();
 
@@ -132,6 +181,8 @@ public class LoadGameData : MonoBehaviour
         foreach (XmlNode managerNode in managerNodes)
         {
             manager._managedStore = newStore;
+            manager.StoreBeingManaged = storename;
+
 
             if (managerNode.Name == "ManagerName")
             {

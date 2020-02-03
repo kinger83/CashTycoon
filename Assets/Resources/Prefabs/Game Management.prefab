@@ -71,5 +71,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8805e7b72391864c82fc40100f090f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _storePanel: {fileID: 0}
-  _managerPanel: {fileID: 0}
+  _storePanel: {fileID: 7743975697730191279, guid: 1ed9b2f3dd7aea94cae20580748a2cef,
+    type: 3}
+  _managerPanel: {fileID: 8958745664602961638, guid: fe7c0eae2486cdc4bbbcce9082a4ac54,
+    type: 3}
+  _upgradesPanel: {fileID: 7182418701250318663, guid: 645da1402c3ab0c4899208d3274255c7,
+    type: 3}
